@@ -58,8 +58,10 @@ abstract public class Entity {
     //Getter//
 
     //Setter//
-    public void setWeaponBehavior(WeaponBehavior weaponBehavior) {
+    public void setWeaponBehavior(WeaponBehavior weaponBehavior)
+    {
         this.weaponBehavior = weaponBehavior;
+        setAttack();
     }
 
     public void setName(String name) {
@@ -102,10 +104,6 @@ abstract public class Entity {
         this.intelligence = intelligence;
     }
 
-    public void setWeapon(WeaponBehavior wp)
-    {
-        weaponBehavior = wp;
-    }
     //Setter//
 
 
@@ -125,23 +123,5 @@ abstract public class Entity {
                 '}';
     }
 
-    public void levelUp()
-    {
-        if (this.level != 5) {
-            this.level++;
-        }else
-            {
-                this.level = 5;
-            }
 
-    }
-
-    public void isAlive(boolean tf)
-    {
-        if (tf)
-        {
-            levelUp();
-            setHealth(120);
-        }
-    }
 }

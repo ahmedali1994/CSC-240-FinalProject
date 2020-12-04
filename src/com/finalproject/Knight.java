@@ -12,9 +12,8 @@ public class Knight extends Entity {
         setStrength(8);
         setResistance(2);
         setEndurance(0);
-        setIntelligence(2);
+        setIntelligence(6);
         setWeaponBehavior(new SwordBehavior());
-        setAttack();
     }
 
 
