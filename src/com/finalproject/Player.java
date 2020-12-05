@@ -5,6 +5,12 @@ import java.util.Scanner;
 public class Player extends Entity implements LevelUp{
 
     Scanner keyBoard = new Scanner(System.in);
+    private WeaponList weaponList = new WeaponList();
+
+    public Player()
+    {
+
+    }
 
     public Player( String name, int vitality, int strength, int resistance, int dexterity, int endurance, int intelligence,WeaponBehavior weaponBehavior)
     {
@@ -22,30 +28,28 @@ public class Player extends Entity implements LevelUp{
 
     public void createPlayer()
     {
+        setHealth(100);
+        setLevel(1);
+        weaponList.initWeapon();
         System.out.print("Enter your player name>> ");
         setName(keyBoard.nextLine());
-        System.out.print("Player Vitality>>");
+        System.out.print("Player Vitality>> ");
         setVitality(Integer.parseInt(keyBoard.nextLine()));
-        System.out.println("Player Strength");
+        System.out.print("Player Strength>> ");
         setStrength(Integer.parseInt(keyBoard.nextLine()));
-        System.out.println("Player resistance");
+        System.out.print("Player resistance>> ");
         setResistance(Integer.parseInt(keyBoard.nextLine()));
-        System.out.println("Player dexterity");
+        System.out.print("Player dexterity>>");
         setDexterity(Integer.parseInt(keyBoard.nextLine()));
-        System.out.println("Player endurance");
+        System.out.print("Player endurance>> ");
         setEndurance(Integer.parseInt(keyBoard.nextLine()));
-        System.out.println("Player intelligence");
+        System.out.print("Player intelligence>> ");
         setIntelligence(Integer.parseInt(keyBoard.nextLine()));
-        System.out.println("Player weaponBehavior");
-        //display list of weapons and make the user choose
-        //setWeaponBehavior();
+        System.out.print("Player weaponBehavior>> ");
+        System.out.println();
+        weaponList.printWeapons();
+        setWeaponBehavior(weaponList.returnWeapon(Integer.parseInt(keyBoard.nextLine())));
     }
-
-
-
-
-
-
 
 
     @Override
