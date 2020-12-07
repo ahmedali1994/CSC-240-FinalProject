@@ -109,7 +109,7 @@ abstract public class Entity {
 
     @Override
     public String toString() {
-        return "Entity{" +
+        return
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", level=" + level +
@@ -119,8 +119,7 @@ abstract public class Entity {
                 ", dexterity=" + dexterity +
                 ", endurance=" + endurance +
                 ", intelligence=" + intelligence +
-                ", attack=" + attack +
-                '}';
+                ", attack=" + attack;
     }
 
 

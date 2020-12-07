@@ -16,4 +16,20 @@ public class EntityList {
         }
     }
 
+    public Entity returnEntity(int index)
+    {
+        return characters.get(index);
+    }
+
+    public void initMonster()
+    {
+        characters.add(new Thief());
+        characters.add(new Knight());
+        characters.add(new Skeleton());
+        characters.add(new Zombie());
+        characters.add(new Troll());
+        characters.add(new Mimic());
+        characters.add(new Imp());
+    }
+
 }

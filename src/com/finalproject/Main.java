@@ -5,51 +5,59 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-//	    EntityList entityList = new EntityList();
-//        entityList.characters.add(new Thief());
-//        entityList.characters.add(new Knight());
-//        entityList.characters.add(new Knight());
-//        entityList.characters.add(new Knight());
-//        entityList.characters.add(new Knight());
-//        entityList.characters.add(new Knight());
-//        entityList.characters.add(new Knight());
-//        entityList.characters.add(new Knight());
-//        Integer[] arr = new Integer[entityList.characters.size()];
-//        for (int i = 0; i < arr.length; i++) {
-//            arr[i] = i;
-//        }
-//        Collections.shuffle(Arrays.asList(arr));
+        Scanner keyboard = new Scanner(System.in);
+        WeaponList weaponList = new WeaponList();
+        EntityList entityList = new EntityList();
+        entityList.initMonster();
+        weaponList.initWeapon();
+
+        Collections.shuffle(entityList.characters);
+        int userMonster;
+
+        Player player1 = new Player();
+        player1.createPlayer();
+        System.out.println(player1.toString());
 
 
-        Player player = new Player();
-        player.createPlayer();
-        System.out.println(player.toString());
+        System.out.println("Enter the number of monster ( Available monsters " + entityList.characters.size() + " )");// fix
+        userMonster = Integer.parseInt(keyboard.nextLine());
+        for (int i = 0; i < userMonster;i++)
+        {
+            System.out.println( i + ": " + entityList.characters.get(i).getName());
+        }
 
-        Thief thief = new Thief();
-        player.setWeaponBehavior(thief.getWeaponBehavior());
-        System.out.println(player.toString());
 
+        for (int i =0; i < userMonster; i++)
+        {
+            while(entityList.characters.get(i).getHealth() > 0)
+            {
+                System.out.println("You hit the " + entityList.characters.get(i).getName() + " for " + player1.getAttack());
+                entityList.characters.get(i).setHealth(entityList.characters.get(i).getHealth() - player1.getAttack());
+                System.out.println(entityList.characters.get(i).getName() + " Health: " + entityList.characters.get(i).getHealth());
+                if (entityList.characters.get(i).getHealth() >= 0)
+                {
+                    System.out.println("The monster attacks back for " + entityList.characters.get(i).getAttack());
+                    player1.setHealth(player1.getHealth() - entityList.characters.get(i).getAttack());
+                    System.out.println("Your remaining health is " + player1.getHealth());
+                    if (player1.getHealth() <=0)
+                    {
+                        System.out.println("You have been defeated!");
+                        break;
+                    }
+                }else if (entityList.characters.get(i).getHealth() < 0) {
+                    System.out.println("You defeated " + entityList.characters.get(i).getName() + " do you want to take the monster weapon");
+                    if (keyboard.nextLine().equalsIgnoreCase("yes")) {
+                        player1.setWeaponBehavior(entityList.characters.get(i).getWeaponBehavior());
+                        player1.isAlive(true);
+                        System.out.println("New attack power = " + player1.getAttack() + "\n your health is " + player1.getHealth());
 
-//        Scanner keyBoard = new Scanner(System.in);
-//        System.out.println("Enter how many monster you want to fight");
-//        int input = keyBoard.nextInt();
-//        for (int i = 0; i < input; i++)
-//        {
-//            System.out.println(entityList.characters.get(arr[i]));
-//        }
-//
-//
-//
-//    }
-//
-//    public void shffle()
-//    {
-//        Integer[] arr = new Integer[7];
-//        for (int i = 0; i < arr.length; i++) {
-//            arr[i] = i;
-//        }
-//        Collections.shuffle(Arrays.asList(arr));
-//        System.out.println(Arrays.toString(arr));
-//    }
+                    }
+                }
+            }
+        }
+        if (player1.getHealth() > 0)
+        {
+            System.out.println("You won!!");
+        }
     }
 }
