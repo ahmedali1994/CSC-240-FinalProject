@@ -3,7 +3,7 @@ package com.finalproject;
 public class Knight extends Entity {
     public Knight()
     {
-        setName("Dark Knight");
+        setName("Knight");
         setHealth(120);
         setLevel(1);
         setVitality(7);
